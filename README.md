@@ -6,4 +6,4 @@
 
 ### Main.js
 
-the main file assemble all bot utils.
+the main file assemble all bot utils and run it.
