@@ -1,3 +1,9 @@
-# FoxBot
+# __FoxBot__
 
-## By Tobi
+## __By Tobi__
+
+## Project in src folder
+
+### Main.js
+
+the main file assemble all bot utils.
