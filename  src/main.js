@@ -10,12 +10,4 @@ bot.commands = new Discord.Collection();
 loadCommands(bot);
 loadEvents(bot);
 
-bot.on("messageCreate", async message => {
-    if (message.content == "!ping"){
-        return bot.commands.get("ping").run(bot, message);
-    }
-});
 
-bot.on("ready", async () => {
-    console.log(`${bot.user.username} is online`);
-});
