@@ -27,12 +27,21 @@ module.exports = {
 
     async run(bot, interaction, options){
         var channel = options.getChannel("salon") != null ? options.getChannel("salon"):interaction.channel
-        channel.bulkDelete(options.get('nombre').value).then(messages => {
+        await interaction.deferReply({ephemeral: true});
+        try{
+            if(options.get('nombre').value > 100){
+                throw new IllegalArgumentException();
+            }
+            channel.bulkDelete(options.get('nombre').value)
+            .then(async messages => {
             interaction.guild.channels.cache.get("1130483351199961219").send(`${interaction.user.username} a supprimé ${messages.size} du channel ${channel.name}.`);
-            return interaction.reply({ephemeral: true, content :`Vous avez bien supprimé ${messages.size} du channel ${channel.name}`});
-        }).catch(() =>{
-            return interaction.reply({ephemeral: true, content :`Vous ne pouvez pas supprimer plus de message que le channel n'en contient`});
-
-        });
+            return interaction.editReply(`Vous avez bien supprimé ${messages.size} du channel ${channel.name}`);
+            }).catch(() => {
+                return interaction.editReply('Vous ne pouvez pas supprimer des messages plus vieux que 14 jours');
+            });
+        }
+        catch(error){
+            return interaction.editReply('Erreur lors de la suppression, essayez de supprimer moins de messages, mettez entre 0 et 100 messages à supprimer');
+        }
     }
 }
