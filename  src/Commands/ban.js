@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports = {
     name: "ban",
     description: "ban un membre du serveur",
-    perimission: discord.PermissionFlagsBits.banMembers,
+    permission: discord.PermissionFlagsBits.BanMembers,
     dm : false,
     options: [
         {
@@ -22,23 +22,20 @@ module.exports = {
 
     async run(bot, interaction, options){ 
 
-        let user = bot.users.cache.get(options._hoistedOptions[0].value);
-        let reason = options.get("raison").value;
-        let member = await interaction.guild.members.fetch(user.id);
+        interaction.guild.members.fetch(options.get("membre")).then(async member => {
+                        //Test if the person can ban
+                        if(member.roles.highest.comparePositionTo(interaction.member.roles.highest) > -1){
+                            interaction.guild.channels.cache.get("1130483351199961219").send(` \`${interaction.user.username}\` a essayé de ban \`${member.user.username}\` mais n'en a pas les droits.`);
+                            return interaction.reply(`Vous ne pouvez ban \`${member.user.username}\`, les logs on été envoyé dans le channel des moderateurs`);
+                        }
 
-        //Test if the person can ban
-        if(member.roles.highest.comparePositionTo(interaction.member.roles.highest) > -1){
-            interaction.guild.channels.cache.get("1130483351199961219").send(` \`${interaction.user.username}\` a essayé de ban \`${user.username}\` mais n'en a pas les droits.`);
-            return interaction.reply(`Vous ne pouvez ban \`${user.username}\`, les logs on été envoyé dans le channel des moderateurs`);
-        }
+                        await member.user.send(`Vous avez été ban du serveur \`${interaction.guild.name}\` pour la raison : \`${options.get("raison").value}\``);
+                        //We can ban
+                        member.ban({reason : options.get("raison").value}).then(()=>{
+                            interaction.guild.channels.cache.get("1130483351199961219").send(` \`${interaction.user.username}\` a ban \`${member.user.username}\` pour la raison : \`${options.get("raison").value}\``);
+                            return interaction.reply(`Vous avez bien ban \`${member.user.username}\`, les logs ont été envoyé dans le channel des moderateurs`)
 
-        // We can ban
-        interaction.guild.members.ban(user.id, {reason : reason}).then(() => {
-            interaction.guild.channels.cache.get("1130483351199961219").send(`\`${interaction.user.username}\` a ban \`${user.username}\` pour la raison : \`${reason}\``);
-            return interaction.reply(`Vous avez bien ban \`${user.username}\`, les logs ont été envoyé dans le channel des moderateurs`)
-        }).catch(() => {
-            interaction.guild.channels.cache.get("1130483351199961219").send(`\`${interaction.user.username}\` a essayé de ban \`${options._hoistedOptions[0].value}\` mais n'en a pas les droits.`);
-            return interaction.reply(`Vous ne pouvez ban cette utilisateur, les logs on été envoyé dans le channel des moderateurs`);
+                        });
         });
 
 
