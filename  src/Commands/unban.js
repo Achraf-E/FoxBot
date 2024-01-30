@@ -24,8 +24,8 @@ module.exports = {
 
         interaction.guild.bans.remove(options.getUser("utilisateur")).then(async user => {
             interaction.guild.channels.cache.get("1130483351199961219").send(` \`${interaction.user.username}\` a unban \`${user.username}\` pour la raison : \`${options.get("raison").value}\``);
-            return interaction.reply(`Vous avez bien unban \`${user.username}\`, les logs ont été envoyé dans le channel des moderateurs`);
-        }).catch(() => {return interaction.reply(`${options.get("utilisateur").value} introuvable.`);});
+            return interaction.reply({ephemeral: true, content : `Vous avez bien unban \`${user.username}\`, les logs ont été envoyé dans le channel des moderateurs`});
+        }).catch(() => {return interaction.reply({ephemeral: true, content : `${options.get("utilisateur").value} introuvable.`});});
 
 
 

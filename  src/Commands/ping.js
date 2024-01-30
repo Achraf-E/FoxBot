@@ -6,6 +6,6 @@ module.exports = {
     dm : true,
 
     async run(bot, message) {
-        await message.reply(`\`Ping : ${bot.ws.ping}\``);
+        await message.reply({ephemeral: true, content : `\`Ping : ${bot.ws.ping}\``});
     }
 }
