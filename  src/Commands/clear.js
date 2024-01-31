@@ -13,7 +13,7 @@ module.exports = {
             type: "number",
             name: "nombre",
             description: "Nombre de messages à supprimer",
-            required: true
+            required: true,
         },
 
         {

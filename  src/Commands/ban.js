@@ -11,7 +11,7 @@ module.exports = {
             type: "user",
             name: "membre",
             description: "membre à ban",
-            required: true
+            required: true,
         },
         {
             type: "string",

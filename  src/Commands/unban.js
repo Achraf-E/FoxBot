@@ -11,7 +11,7 @@ module.exports = {
             type: "user",
             name: "utilisateur",
             description: "utilisateur à unban",
-            required: true
+            required: true,
         },
         {
             type: "string",
