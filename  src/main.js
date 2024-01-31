@@ -7,6 +7,7 @@ const config = require("./config.js");
 
 bot.login(config.token);
 bot.commands = new Discord.Collection();
+bot.color = "Orange";
 loadCommands(bot);
 loadEvents(bot);
 

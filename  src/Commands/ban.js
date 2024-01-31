@@ -5,6 +5,7 @@ module.exports = {
     description: "ban un membre du serveur",
     permission: discord.PermissionFlagsBits.BanMembers,
     dm : false,
+    category: "Modération",
     options: [
         {
             type: "user",

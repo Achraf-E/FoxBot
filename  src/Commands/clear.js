@@ -1,5 +1,4 @@
 const Discord = require("discord.js")
-const { description, permission } = require("./ban")
 
 
 module.exports = {
@@ -7,6 +6,7 @@ module.exports = {
     description : "Supprime les derniers messages d'un channel \n (celui-ci, si aucun n'est précisé)",
     permission : Discord.PermissionFlagsBits.ModerateMembers,
     dm: false,
+    category: "Modération",
     options: [
 
         {

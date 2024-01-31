@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
-const { options } = require("./ban");
 
 module.exports = {
     name: "mute",
     description: "mute un membre",
     dm : false,
     permission : Discord.PermissionFlagsBits.ModerateMembers,
+    category: "Modération",
     options : [
         {
             type: "user",
