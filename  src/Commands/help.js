@@ -21,9 +21,7 @@ module.exports = {
         .setTitle("Commandes de Foxbot")
         .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
         .setTimestamp()
-        .setDescription(`Commandes disponibles : \`${bot.commands.size}\` \n Catégories disponibles : \`${categories.length}\` `)
-        .setFooter({text: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`});
-
+        .setDescription(`Commandes disponibles : \`${bot.commands.size}\` \n Catégories disponibles : \`${categories.length}\` `);
 
 
         categories.sort().forEach(category => {
