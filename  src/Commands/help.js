@@ -6,7 +6,7 @@ module.exports = {
     dm: true,
     category: "Informations",
 
-    async run(bot, interaction, options){
+    async run(bot, interaction){
         let categories = [];
         bot.commands.forEach(command => {
             if(!categories.includes(command.category)) categories.push(command.category);

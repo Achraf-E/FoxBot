@@ -25,7 +25,7 @@ module.exports = {
 
     ],
 
-    async run(bot, interaction, options){
+    async run(bot, interaction, options, config){
         var channel = options.getChannel("salon") != null ? options.getChannel("salon"):interaction.channel
         await interaction.deferReply({ephemeral: true});
         try{
@@ -34,7 +34,7 @@ module.exports = {
             }
             channel.bulkDelete(options.get('nombre').value)
             .then(async messages => {
-            interaction.guild.channels.cache.get("1130483351199961219").send(`${interaction.user.username} a supprimé ${messages.size} du channel ${channel.name}.`);
+            interaction.guild.channels.cache.get(config.moderate_channel).send(`${interaction.user.username} a supprimé ${messages.size} du channel ${channel.name}.`);
             return interaction.editReply(`Vous avez bien supprimé ${messages.size} du channel ${channel.name}`);
             }).catch(() => {
                 return interaction.editReply('Vous ne pouvez pas supprimer des messages plus vieux que 14 jours');

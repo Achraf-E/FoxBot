@@ -1,7 +1,8 @@
 const { error } = require("console");
 const fs = require("fs");
+const { config } = require("process");
 
-module.exports = async bot => {
+module.exports = async (bot) => {
 
     fs.readdirSync("./Commands").filter(file => file.endsWith(".js")).forEach(async file => {
 

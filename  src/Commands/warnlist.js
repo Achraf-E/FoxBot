@@ -8,7 +8,7 @@ module.exports = {
     dm : false,
     category : "Informations",
     
-    async run(bot, interaction, options , db){
+    async run(bot, interaction, options ,config, db){
         //Create the embed
         let embed = new Discord.EmbedBuilder()
         .setColor(bot.color)
