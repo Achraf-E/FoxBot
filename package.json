@@ -4,7 +4,7 @@
     "description": "Bot pour discord server",
     "main": "src/main.js",
     "scripts": {
-      "start": "node main"
+      "start": "node src/main.js"
     },
     "author": "Tobi",
     "license": "ISC",
