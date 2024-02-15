@@ -3,9 +3,9 @@ const intents = new Discord.IntentsBitField(3276799);
 const bot = new Discord.Client({intents});
 const loadCommands = require("./Loaders/loadCommands.js");
 const loadEvents = require("./Loaders/loadEvents.js");
-const config = process.env;
+const config = require("./config.json").test;
 
-bot.login(process.env.TOKEN);
+bot.login(require("./config.json").TOKEN);
 bot.commands = new Discord.Collection();
 bot.color = "Orange";
 loadCommands(bot,config);

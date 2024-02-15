@@ -4,7 +4,7 @@ const { config } = require("process");
 
 module.exports = async (bot) => {
 
-    fs.readdirSync("./Commands").filter(file => file.endsWith(".js")).forEach(async file => {
+    fs.readdirSync("./src/Commands").filter(file => file.endsWith(".js")).forEach(async file => {
 
         let command = require(`../Commands/${file}`);
         if(!command.name || typeof command.name !== "string"){
