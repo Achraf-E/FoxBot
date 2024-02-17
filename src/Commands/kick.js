@@ -1,5 +1,5 @@
 const discord = require("discord.js");
-const config = require("../config.json").test;
+const config = require("../config.json").official;
 
 module.exports = {
     name: "kick",
@@ -25,7 +25,7 @@ module.exports = {
     async run(bot, interaction, options){ 
 
         interaction.guild.members.fetch(options.get("membre")).then(async member => {
-                        //test if the person can kick
+                        //official if the person can kick
                         if(member.roles.highest.comparePositionTo(interaction.member.roles.highest) > -1){
                             interaction.guild.channels.cache.get(config.moderate_channel).send(` \`${interaction.user.username}\` a essayé de kick \`${member.user.username}\` mais n'en a pas les droits.`);
                             return interaction.reply({ephemeral: true, content : `Vous ne pouvez kick \`${member.user.username}\`, les logs on été envoyé dans le channel des moderateurs`});
