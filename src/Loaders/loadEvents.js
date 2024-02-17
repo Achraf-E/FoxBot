@@ -2,7 +2,7 @@ const fs = require("fs");
 
 module.exports = async (bot) => {
 
-    fs.readdirSync("./src/Events").filter(file => file.endsWith(".js")).forEach(async file => {
+    fs.readdirSync("./Events").filter(file => file.endsWith(".js")).forEach(async file => {
         
         let event = require(`../Events/${file}`);
 
