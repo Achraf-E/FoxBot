@@ -28,7 +28,7 @@ module.exports = {
 
     async run(bot, interaction, options, db){
         var member = interaction.guild.members.fetch(options.get("membre")).then(async member => {
-            //Test if the person can warn
+            //test if the person can warn
             if(member.roles.highest.comparePositionTo(interaction.member.roles.highest) > -1){
                 interaction.guild.channels.cache.get(config.moderate_channel).send(` \`${interaction.user.username}\` a essayé de warn \`${member.user.username}\` mais n'en a pas les droits.`);
                 return interaction.reply({ephemeral: true, content :  `Vous ne pouvez warn \`${member.user.username}\`, les logs on été envoyé dans le channel des moderateurs`});

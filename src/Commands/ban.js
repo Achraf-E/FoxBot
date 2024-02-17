@@ -25,7 +25,7 @@ module.exports = {
     async run(bot, interaction, options){ 
 
         interaction.guild.members.fetch(options.get("membre")).then(async member => {
-                        //Test if the person can ban
+                        //test if the person can ban
                         if(member.roles.highest.comparePositionTo(interaction.member.roles.highest) > -1){
                             interaction.guild.channels.cache.get(config.moderate_channel).send(` \`${interaction.user.username}\` a essayé de ban \`${member.user.username}\` mais n'en a pas les droits.`);
                             return interaction.reply({ephemeral: true, content :  `Vous ne pouvez ban \`${member.user.username}\`, les logs on été envoyé dans le channel des moderateurs`});
