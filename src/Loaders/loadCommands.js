@@ -1,6 +1,4 @@
-const { error } = require("console");
 const fs = require("fs");
-const { config } = require("process");
 
 module.exports = async (bot) => {
 

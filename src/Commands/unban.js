@@ -1,4 +1,5 @@
 const discord = require("discord.js");
+const config = require("../config.json").test;
 
 module.exports = {
     name: "unban",
@@ -21,7 +22,7 @@ module.exports = {
         }
     ],
 
-    async run(bot, interaction, options, config){ 
+    async run(bot, interaction, options){ 
 
         interaction.guild.bans.remove(options.getUser("utilisateur")).then(async user => {
             interaction.guild.channels.cache.get(config.moderate_channel).send(` \`${interaction.user.username}\` a unban \`${user.username}\` pour la raison : \`${options.get("raison").value}\``);

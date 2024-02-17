@@ -1,4 +1,5 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const config = require("../config.json").test;
 
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
 
     ],
 
-    async run(bot, interaction, options, config){
+    async run(bot, interaction, options){
         var channel = options.getChannel("salon") != null ? options.getChannel("salon"):interaction.channel
         await interaction.deferReply({ephemeral: true});
         try{

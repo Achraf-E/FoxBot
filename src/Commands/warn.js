@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const config = require("../config.json").test;
 
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
 
     ],
 
-    async run(bot, interaction, options ,config, db){
+    async run(bot, interaction, options, db){
         var member = interaction.guild.members.fetch(options.get("membre")).then(async member => {
             //Test if the person can warn
             if(member.roles.highest.comparePositionTo(interaction.member.roles.highest) > -1){

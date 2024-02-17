@@ -1,4 +1,5 @@
 const discord = require("discord.js");
+const config = require("../config.json").test;
 
 module.exports = {
     name: "kick",
@@ -21,7 +22,7 @@ module.exports = {
         }
     ],
 
-    async run(bot, interaction, options, config){ 
+    async run(bot, interaction, options){ 
 
         interaction.guild.members.fetch(options.get("membre")).then(async member => {
                         //Test if the person can kick
